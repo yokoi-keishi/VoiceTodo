@@ -106,6 +106,29 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
+    //navigationItem
+    @IBAction func allTrush(_ sender: Any) {
+        
+        let alertController = UIAlertController(title: "全Todo消去", message: "全てのTodoを削除します", preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            
+            self.todoList.removeAll()
+            self.tableView.reloadData()
+            self.userDefaults.set(self.todoList, forKey: "todoList")
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
     //returnKeyでメソッド発動
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
