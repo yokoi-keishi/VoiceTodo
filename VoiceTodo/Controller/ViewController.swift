@@ -86,6 +86,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let todoTitle = todoList[indexPath.row]
         cell.textLabel?.text = todoTitle
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 13.0)
+        cell.backgroundColor = .systemGray4
         
         return cell
         
@@ -201,6 +203,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             audioEngine.stop()
             recognitionRequest?.endAudio()
             speechImage.image = UIImage(named: "mike")
+            todoList.insert(textField.text!, at: 0)
+            tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .right)
+            userDefaults.set(todoList, forKey: "todoList")
+            tableView.reloadData()
             textField.text = ""
             return
         }
