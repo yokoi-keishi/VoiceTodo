@@ -106,7 +106,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
-    //navigationItem
+    //navigationItem 全てのTodoを削除
     @IBAction func allTrush(_ sender: Any) {
         
         let alertController = UIAlertController(title: "全Todo消去", message: "全てのTodoを削除します", preferredStyle: .alert)
@@ -141,6 +141,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             audioEngine.stop()
             recognitionRequest?.endAudio()
             speechImage.image = UIImage(named: "mike")
+
         }
         
         todoList.insert(textField.text!, at: 0)
@@ -212,7 +213,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         audioEngine.prepare() //準備
         try audioEngine.start() //開始
         
-        textField.text = "(認識中...そのまま話し続けてください)"
+        textField.attributedPlaceholder = NSAttributedString(string: "(認識中...そのまま話し続けてください)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray4])
         
     }
     
@@ -226,12 +227,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             audioEngine.stop()
             recognitionRequest?.endAudio()
             speechImage.image = UIImage(named: "mike")
+            textField.placeholder = ""
+            
+            if textField.text == "" || textField.text == nil {
+                return
+            }
+            
             todoList.insert(textField.text!, at: 0)
             tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .right)
             userDefaults.set(todoList, forKey: "todoList")
             tableView.reloadData()
             textField.text = ""
             return
+        
         }
         //録音開始
         try! startRecording()
