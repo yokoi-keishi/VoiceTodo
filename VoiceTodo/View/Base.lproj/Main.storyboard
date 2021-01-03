@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DVT-jC-org">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DVT-jC-org">
                                 <rect key="frame" x="0.0" y="193" width="428" height="569"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="aGz-Wd-NVV">
@@ -31,17 +30,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IXg-de-Ag3">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IXg-de-Ag3">
                                 <rect key="frame" x="20" y="101" width="388" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="388" id="a3k-Dx-a6Q"/>
+                                    <constraint firstAttribute="height" constant="34" id="x5W-Iq-bh5"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mike" translatesAutoresizingMaskIntoConstraints="NO" id="UQ1-FR-dOZ">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mike" translatesAutoresizingMaskIntoConstraints="NO" id="UQ1-FR-dOZ">
                                 <rect key="frame" x="318" y="787" width="90" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="J6p-Ag-tni"/>
+                                    <constraint firstAttribute="height" constant="90" id="gfr-nf-tra"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="anf-cN-RjL" appends="YES" id="k1e-uv-xGr"/>
                                 </connections>
@@ -49,6 +55,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <constraints>
+                            <constraint firstItem="UQ1-FR-dOZ" firstAttribute="top" secondItem="DVT-jC-org" secondAttribute="bottom" constant="25" id="1oa-Ij-H2p"/>
+                            <constraint firstItem="IXg-de-Ag3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="5SO-kQ-0pv"/>
+                            <constraint firstItem="DVT-jC-org" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B0Q-fR-yqK"/>
+                            <constraint firstItem="IXg-de-Ag3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HhD-yu-Vjj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IXg-de-Ag3" secondAttribute="trailing" constant="20" id="MdR-bz-s0J"/>
+                            <constraint firstItem="DVT-jC-org" firstAttribute="top" secondItem="IXg-de-Ag3" secondAttribute="bottom" constant="58" id="b3f-ou-gxc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UQ1-FR-dOZ" secondAttribute="bottom" constant="15" id="kme-6o-Txe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UQ1-FR-dOZ" secondAttribute="trailing" constant="20" id="nby-30-UaI"/>
+                            <constraint firstItem="DVT-jC-org" firstAttribute="centerX" secondItem="IXg-de-Ag3" secondAttribute="centerX" id="yx4-Ic-83g"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="speechImage" destination="UQ1-FR-dOZ" id="ccx-Sf-22R"/>
