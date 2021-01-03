@@ -33,8 +33,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             todoList.append(contentsOf: storedTodoList)
             
         }
-        //ユーザーから録音許可が出たら、trueにする
-//        textField.isUserInteractionEnabled = false
+        
+        tableView.isEditing = true
+        tableView.allowsSelectionDuringEditing = true
+        
         
     }
     
@@ -106,6 +108,31 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
+    //編集メソッド
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row) row did select")
+    }
+
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let todo = todoList[sourceIndexPath.row]
+        todoList.remove(at: sourceIndexPath.row)
+        todoList.insert(todo, at: destinationIndexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+
+
+
     //navigationItem 全てのTodoを削除
     @IBAction func allTrush(_ sender: Any) {
         
