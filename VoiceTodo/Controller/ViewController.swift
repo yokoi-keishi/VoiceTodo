@@ -8,7 +8,7 @@
 import UIKit
 import Speech
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SFSpeechRecognitionTaskDelegate, SFSpeechRecognizerDelegate {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SFSpeechRecognitionTaskDelegate, SFSpeechRecognizerDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
@@ -66,6 +66,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         
         speechRecognizer?.delegate = self
+        textField.delegate = self
         
     }
     
@@ -103,10 +104,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
-    @IBAction func send(_ sender: Any) {
+    //returnKeyでメソッド発動
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField.text == "" {
-            return
+        if textField.text == "" || textField.text == nil {
+            return false
         }
         
         if audioEngine.isRunning {
@@ -114,8 +116,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             audioEngine.stop()
             recognitionRequest?.endAudio()
             speechImage.image = UIImage(named: "mike")
-            textField.text = ""
-//            return
         }
         
         todoList.insert(textField.text!, at: 0)
@@ -123,9 +123,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         userDefaults.set(todoList, forKey: "todoList")
         tableView.reloadData()
         textField.text = ""
-        
+        return true
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        textField.resignFirstResponder()
+        
+    }
     
     //ここからSpeechメソッド
     
