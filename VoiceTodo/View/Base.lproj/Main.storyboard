@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todoリスト-->
+        <!--VoiceTodo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VoiceTodo" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                             <constraint firstItem="DVT-jC-org" firstAttribute="centerX" secondItem="IXg-de-Ag3" secondAttribute="centerX" id="yx4-Ic-83g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Todoリスト" id="eJy-US-okb">
+                    <navigationItem key="navigationItem" title="VoiceTodo" id="eJy-US-okb">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="H8f-pW-cO9">
                             <color key="tintColor" systemColor="linkColor"/>
                             <connections>

@@ -69,6 +69,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         speechRecognizer?.delegate = self
         textField.delegate = self
         
+        //ナビゲーションバーの背景色
+        self.navigationController?.navigationBar.barTintColor = .systemGray4
+
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,12 +137,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-    
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        return .none
-//    }
-
-
 
     //navigationItem 全てのTodoを削除
     @IBAction func allTrush(_ sender: Any) {
