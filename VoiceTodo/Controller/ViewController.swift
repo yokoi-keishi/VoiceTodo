@@ -34,9 +34,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
         }
         
-        tableView.isEditing = true
+        navigationItem.leftBarButtonItem = editButtonItem
         tableView.allowsSelectionDuringEditing = true
-        
         
     }
     
@@ -109,6 +108,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     //編集メソッド
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        
+        tableView.isEditing = editing
+        
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row) row did select")
     }
@@ -127,9 +134,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return false
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .none
+//    }
 
 
 
