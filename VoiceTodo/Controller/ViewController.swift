@@ -71,7 +71,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         //ナビゲーションバーの背景色
         self.navigationController?.navigationBar.barTintColor = .systemGray4
-
         
     }
     
